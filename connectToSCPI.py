@@ -35,6 +35,11 @@ def sendtoSCPI(message):
 
 # Use the OAuth2Session object to make requests to the service
     response = oauth.post(api_url, data=sample_payload ,headers={'Accept': 'application/json'})
+    print(response.text)
+#parse the SCPI response for actual result
+    response_json = json.loads(response.text)
+    response_value = response_json['status']
+
 
 # Print the response content
-    return response.content
+    return response_value
