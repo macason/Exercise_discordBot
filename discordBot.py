@@ -25,11 +25,9 @@ async def on_message(message):
         #debug
         print(message.content.lower()) 
         
-        SCPIResponse = connectToSCPI.sendtoSCPI(message)
+        response = connectToSCPI.sendtoSCPI(message.content.lower())
         
-        #parse the SCPI response for actual result
-        response_json = json.load(SCPIResponse)
-        response = response_json['status']
+
         await message.channel.send(response)
 
 
